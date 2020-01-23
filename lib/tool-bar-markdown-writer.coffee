@@ -25,36 +25,37 @@ module.exports =
     critic_markup:
       type: 'boolean',
       default: false,
-      description: 'Configure Critic Markup toolbar buttons visibility behaviour'
+      description: 'Configure CriticMarkup toolbar buttons visibility behaviour'
 
   buttons: [
-    {
-      'icon': 'file'
-      'tooltip': 'Add New Post/Draft'
-      'callback':
-        '': 'markdown-writer:new-post'
-        'shift': 'markdown-writer:new-draft'
-    }
-    {
-      'icon': 'markdown'
-      'tooltip': 'Preview Markdown'
-      'data': ['markdown-preview', 'markdown-preview-plus', 'markdown-preview-enhanced']
-      'visible': (data) ->
-        pkg = data.find (pkg) -> !!atom.packages.getLoadedPackage(pkg)
-        "#{pkg}:toggle" if pkg
-    }
-    { 'type': 'separator' }
-    {
-      'icon': 'tag'
-      'tooltip': 'Manage Tags'
-      'callback': 'markdown-writer:manage-post-tags'
-    }
-    {
-      'icon': 'label'
-      'tooltip': 'Manage Categories'
-      'callback': 'markdown-writer:manage-post-categories'
-    }
-    { 'type': 'separator' }
+    # {
+    #   'icon': 'file'
+    #   'tooltip': 'Add New Post/Draft'
+    #   'callback':
+    #     '': 'markdown-writer:new-post'
+    #     'shift': 'markdown-writer:new-draft'
+    # }
+    # {
+    #   'icon': 'markdown'
+    #   'tooltip': 'Preview Markdown'
+    #   'data': ['markdown-preview',
+    #   'markdown-preview-plus', 'markdown-preview-enhanced']
+    #   'visible': (data) ->
+    #     pkg = data.find (pkg) -> !!atom.packages.getLoadedPackage(pkg)
+    #     "#{pkg}:toggle" if pkg
+    # }
+    # { 'type': 'separator' }
+    # {
+    #   'icon': 'tag'
+    #   'tooltip': 'Manage Tags'
+    #   'callback': 'markdown-writer:manage-post-tags'
+    # }
+    # {
+    #   'icon': 'label'
+    #   'tooltip': 'Manage Categories'
+    #   'callback': 'markdown-writer:manage-post-categories'
+    # }
+    # { 'type': 'separator' }
     {
       'icon': 'link-variant'
       'tooltip': 'Insert Link'
@@ -105,6 +106,12 @@ module.exports =
         '': 'markdown-writer:toggle-task'
         'shift': 'markdown-writer:toggle-taskdone'
     }
+    {
+      'icon': 'arrow-down-bold-hexagon-outline'
+      'tooltip': 'Insert Footnote'
+      'callback': 'markdown-writer:insert-footnote'
+
+    }
     { 'type': 'separator' }
     {
       'icon': 'format-header-1'
@@ -122,6 +129,16 @@ module.exports =
       'callback': 'markdown-writer:toggle-h3'
     }
     { 'type': 'separator' }
+    {
+      'icon': 'table-column'
+      'tooltip': 'Insert TOC'
+      'callback': 'markdown-writer:insert-toc'
+      }
+    {
+      'icon': 'table-column-plus-after'
+      'tooltip': 'Update TOC'
+      'callback': 'markdown-writer:update-toc'
+      }
     {
       'icon': 'format-header-decrease'
       'tooltip': 'Jump to Previous Heading'
